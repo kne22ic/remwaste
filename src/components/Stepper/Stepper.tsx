@@ -1,5 +1,6 @@
-import React from "react"
-import { Check } from "lucide-react"
+import React, { useState } from "react"
+import { Check, ChevronLeft } from "lucide-react"
+import { Button } from "../ui/button"
 
 export interface StepperStep {
     icon?: React.ReactNode
@@ -10,6 +11,7 @@ export interface StepperStep {
 interface StepperProps {
     steps: StepperStep[]
     initialStep?: number
+    onStepChange?: (step: number) => void
 }
 
 /**
@@ -21,17 +23,26 @@ interface StepperProps {
  * The component currently allows only for a visual representation of progress through a series of steps.
  */
 
-export default function Stepper({ steps, initialStep = 0 }: StepperProps) {
+export default function Stepper({ steps, initialStep = 0, onStepChange }: StepperProps) {
+    const [currentStep, setCurrentStep] = useState(initialStep)
+
+    const goBack = () => {
+        if (currentStep > 0) {
+            setCurrentStep(currentStep - 1)
+            onStepChange?.(currentStep - 1)
+        }
+    }
+
     return (
         <div className="w-full mx-auto bg-white">
             <div className="border-b border-gray-200 py-3 sm:px-0 px-4">
                 <div className="flex items-center mx-auto max-w-3xl">
                     {steps.map((step, idx) => {
                         let icon, color;
-                        if (idx < initialStep) {
+                        if (idx < currentStep) {
                             icon = <Check size={20} />;
                             color = "text-green-600 font-semibold";
-                        } else if (idx === initialStep) {
+                        } else if (idx === currentStep) {
                             icon = step.icon;
                             color = "text-blue-600 font-semibold";
                         } else {
@@ -52,8 +63,19 @@ export default function Stepper({ steps, initialStep = 0 }: StepperProps) {
                     })}
                 </div>
             </div>
+
             {/* Display the content of the current step */}
-            <div className="flex flex-col justify-between mx-auto max-w-3xl">{steps[initialStep].content}</div>
+            <div className="flex flex-col justify-between mx-auto max-w-3xl">
+                {currentStep > 0 && (
+                    <Button
+                        className="mt-4 px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 w-fit"
+                        onClick={goBack}
+                    >
+                        <ChevronLeft /> Back
+                    </Button>
+                )}
+                {steps[currentStep].content}
+            </div>
         </div>
     )
 }
