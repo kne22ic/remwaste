@@ -55,7 +55,6 @@ remwaste/
 
 1. **Fetching Skips:**  
    The app fetches skips from a remote API using a Redux async thunk. Each skip is enriched with:
-
    - An image URL based on its size (e.g., `4-yarder-skip.jpg`)
    - A `perfect_for` array suggesting typical use cases for each size
    - API calls are hardcoded for this task and the app does not handle env files or dynamic API endpoints.
