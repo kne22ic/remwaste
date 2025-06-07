@@ -12,8 +12,10 @@ const SkipSelection = () => {
     const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
 
     useEffect(() => {
-        dispatch(fetchSkips());
-    }, [dispatch]);
+        if(!skips.length) {
+            dispatch(fetchSkips());
+        }
+    }, [dispatch, skips.length]);
 
     return (
         <div className="p-6 bg-white">

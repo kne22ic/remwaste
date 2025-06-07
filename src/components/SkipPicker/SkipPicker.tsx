@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Skip } from "@/store/skipsSlice";
 import {
     Card,
@@ -11,6 +12,13 @@ interface SkipPickerProps {
 }
 
 const SkipPicker = ({ skips, onSkipSelect, selectedSkip }: SkipPickerProps) => {
+    // Set the first skip as default if none is selected
+    useEffect(() => {
+        if (!selectedSkip && skips.length > 0) {
+            onSkipSelect(skips[0]);
+        }
+    }, [selectedSkip, skips, onSkipSelect]);
+
     return (
         <div className="mb-6">
             <div className="flex gap-2 overflow-x-auto p-4 bg-white rounded-lg border border-gray-200">

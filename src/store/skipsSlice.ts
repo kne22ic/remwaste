@@ -17,6 +17,7 @@ export interface Skip {
     allowed_on_road: boolean,
     allows_heavy_waste: boolean,
     image: string,
+    perfect_for: string[], // <-- add this
 }
 
 interface SkipsState {
@@ -31,17 +32,28 @@ const initialState: SkipsState = {
     error: null,
 }
 
-// Replace this URL with your actual API endpoint
 export const fetchSkips = createAsyncThunk<Skip[]>(
     'skips/fetchSkips',
     async () => {
-        // For the task we are using a static URL.
-        // We should use a env variable in a real application.
         const response = await axios.get<Skip[]>('https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft')
         if (response.status !== 200) throw new Error('Failed to fetch skips')
+
+        const perfectForBySize: Record<number, string[]> = {
+            4: ["Kitchen/bathroom refits", "Medium home clearances", "Garden projects"],
+            6: ["Builders waste", "Larger home clearances", "Heavy materials"],
+            8: ["Large renovations", "Office clearances", "Bulky items"],
+            10: ["Major projects", "Commercial waste", "Large bulky items"],
+            12: ["Large construction jobs", "Shop refits", "High volume waste"],
+            14: ["Industrial waste", "Large scale renovations", "High volume heavy waste"],
+            16: ["Construction sites", "Large commercial clearances", "High volume mixed waste"],
+            20: ["Large construction projects", "Commercial clearances", "High volume waste removal"],
+            40: ["Industrial projects", "Large scale demolitions", "High volume heavy waste removal"]
+        };
+
         return response.data.map(skip => ({
             ...skip,
-            image: `https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/${skip.size}-yarder-skip.jpg`
+            image: `https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/${skip.size}-yarder-skip.jpg`,
+            perfect_for: perfectForBySize[skip.size] || ["General waste removal", "Mixed waste", "Various projects"]
         }))
     }
 )
