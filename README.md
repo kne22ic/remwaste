@@ -1,23 +1,37 @@
 # REMWaste Skip Selection App
 
-A modern React + TypeScript application for selecting skip sizes, built with Vite. This project demonstrates a clean, component-driven approach to presenting skip hire options, fetching data from a remote API, and providing a user-friendly selection experience.
+A modern React + TypeScript application for selecting skip sizes, built using Vite. This project offers a clean, component-driven UI that lets users easily browse and select skip hire options. It fetches data from a remote API and presents it in a user-friendly, responsive layout.
 
 ---
 
 ## Idea
 
-The idea behind the REMWaste Skip Selection App is to provide users with an intuitive and efficient way to select the right skip size for their needs. By leveraging a modern tech stack and best practices in UI/UX design, the app aims to simplify the process of skip hire and make it accessible to a wider audience.
-The app features a responsive design, dynamic data fetching, and detailed skip information, allowing users to make informed decisions quickly.
+The REMWaste Skip Selection App was developed as a technical interview task to demonstrate modern front-end development skills using React, TypeScript, and Redux Toolkit. It’s designed to help users quickly find the right skip size with an intuitive, responsive interface. With dynamic data fetching, detailed skip information, and clean component-driven architecture, the app showcases a practical and scalable solution for skip hire selection.
 
 ---
 
 ## Features
 
-- **Skip Selection:** Users can browse available skip sizes, view details, and select the most suitable option.
-- **Dynamic Data:** Skips are fetched from a remote API and enriched with images and usage suggestions.
-- **Detailed Skip Cards:** Each skip displays capacity, hire period, price, VAT, suitability, and more.
-- **Responsive UI:** Built with Tailwind CSS and custom UI components for a modern look and feel.
-- **Type Safety:** All data structures and API responses are strongly typed with TypeScript.
+ - **Skip Browsing & Selection**
+Easily scroll through available skip sizes, view their details, and choose the best option for your needs.
+
+ - **Dynamic Data Fetching**
+Skips are fetched from a remote API and automatically enriched with images and suggested use cases.
+
+ - **Informative Skip Cards**
+Each card shows:
+
+ - **Capacity, hire period, price (with VAT)**
+
+ - **Suitability** (e.g., road-legal, heavy waste compatibility)
+
+ - **Extra info** like postcode, area, per-tonne costs, and restrictions
+
+ - **Responsive UI**
+Built with Tailwind CSS and custom components to ensure it looks great on all devices.
+
+ - **Fully Typed with TypeScript**
+Ensures safer code, better tooling, and easier refactoring.
 
 ---
 
@@ -51,22 +65,22 @@ remwaste/
 
 ---
 
-## Data Flow & Approach
+## How It Works
 
 1. **Fetching Skips:**  
-   The app fetches skips from a remote API using a Redux async thunk. Each skip is enriched with:
-   - An image URL based on its size (e.g., `4-yarder-skip.jpg`)
-   - A `perfect_for` array suggesting typical use cases for each size
-   - API calls are hardcoded for this task and the app does not handle env files or dynamic API endpoints.
+   Skip data is fetched from a static API endpoint using a Redux async thunk. Each skip entry is enriched with:
+   - A matching image (e.g. 4-yarder-skip.jpg)
+   - A list of "perfect for" use cases based on size
+
+   The API endpoint is currently hardcoded and does not support .env or dynamic URLs.
 
 2. **Skip Selection:**
 
-   - The `SkipPicker` component displays all skips horizontally.
-   - Clicking a card updates the selected skip in the parent (`SkipSelection`).
-   - The selected skip is highlighted with a blue background and border.
+- The `SkipPicker` component displays all available skips horizontally.
+- Selecting a skip updates the state in the parent component (`SkipSelection`).
+- The selected card is visually highlighted with a blue border and background.
 
-3. **Skip Details:**
-
+3. **Viewing Skip Details:**
    - The `SkipCard` component shows all relevant details for the selected skip, including:
      - Capacity, hire period, price, VAT
      - Allowed on road, allows heavy waste (with warnings if not)
