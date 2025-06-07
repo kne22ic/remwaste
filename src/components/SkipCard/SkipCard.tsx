@@ -12,7 +12,7 @@ interface SkipCardProps {
 const SkipCard = ({ skip }: SkipCardProps) => {
     return (
         <Card className="w-full">
-            <div className="sm:flex flex-col">
+            <div className="flex flex-col md:flex-row">
                 <div className="flex flex-col items-center justify-center bg-blue-100 flex-1 rounded-l-lg p-4">
                     <img src={skip.image} alt={`${skip.size} Yard Skip`} className="w-full h-auto object-cover rounded" />
                 </div>
