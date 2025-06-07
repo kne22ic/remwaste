@@ -23,11 +23,6 @@
       "name": "lint",
       "command": "npm run lint",
       "runAtStart": false
-    },
-    "preview": {
-      "name": "preview",
-      "command": "npm run preview",
-      "runAtStart": false
     }
   }
 }
