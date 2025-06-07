@@ -13,8 +13,7 @@ interface SkipPickerProps {
 const SkipPicker = ({ skips, onSkipSelect, selectedSkip }: SkipPickerProps) => {
     return (
         <div className="mb-6">
-            <h2 className="text-md font-semibold mb-2 text-center">Available Skip Sizes</h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-x-auto p-4 bg-white rounded-lg border border-gray-200">
                 {skips.map((skip) => (
                     <Card
                         key={skip.id}

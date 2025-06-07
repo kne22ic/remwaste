@@ -16,7 +16,7 @@ const SkipSelection = () => {
     }, [dispatch]);
 
     return (
-        <div className="p-6 bg-white max-w-6xl mx-auto">
+        <div className="p-6 bg-white">
             <h1 className="text-2xl font-bold mb-2 text-center">Skip Selection</h1>
             <p className="mb-4 text-center text-gray-500">Select a skip size that suits your needs.</p>
 
