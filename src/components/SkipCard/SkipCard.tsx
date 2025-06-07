@@ -4,7 +4,7 @@ import { Card } from "../ui/card";
 import type { Skip } from "@/store/skipsSlice";
 import { TriangleAlert, ChevronRight, Info, Check } from "lucide-react";
 import { Button } from "../ui/button";
-import { TooltipContent, TooltipTrigger, Tooltip } from "../ui/tooltip";
+import { TooltipContent, TooltipTrigger, Tooltip } from "@/components/ui/tooltip";
 
 interface SkipCardProps {
     skip: Skip;
