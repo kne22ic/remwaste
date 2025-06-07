@@ -1,6 +1,15 @@
 import Logo from "../Logo/Logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
+/**
+ * 
+ * @returns Navbar component
+ * @description This component renders a sticky navigation bar with a logo, navigation links, and a user avatar.
+ * The navigation links are only visible on larger screens (desktop), while the user avatar is always visible.
+ * The navbar is styled with Tailwind CSS classes for a clean and modern look.
+ * This navbar is solely for making the application look more complete and does not include any functionality.
+ */
+
 const Navbar = () => {
     return (
         <nav className="sticky top-0 w-full bg-white border-b border-gray-200 sm:px-0 px-4">

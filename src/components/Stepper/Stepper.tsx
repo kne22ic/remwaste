@@ -12,6 +12,15 @@ interface StepperProps {
     initialStep?: number
 }
 
+/**
+ *
+ * @param {StepperProps} props 
+ * @returns JSX.Element
+ * @description Stepper component that displays a series of steps with icons and labels.
+ * Each step can have a custom icon and label, and the current step is highlighted.
+ * The component currently allows only for a visual representation of progress through a series of steps.
+ */
+
 export default function Stepper({ steps, initialStep = 0 }: StepperProps) {
     return (
         <div className="w-full mx-auto bg-white">

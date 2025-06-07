@@ -11,8 +11,16 @@ interface SkipPickerProps {
     selectedSkip: Skip | null;
 }
 
+/**
+ *
+ * @param {SkipPickerProps} props - The properties for the SkipPicker component.
+ * @returns JSX.Element
+ * @description SkipPicker component allows users to select a skip from a list of available skips.
+ * It displays the skips in a horizontal scrollable list with their size and price.
+ * The selected skip is highlighted, and clicking on a skip updates the selection.
+ */
+
 const SkipPicker = ({ skips, onSkipSelect, selectedSkip }: SkipPickerProps) => {
-    // Set the first skip as default if none is selected
     useEffect(() => {
         if (!selectedSkip && skips.length > 0) {
             onSkipSelect(skips[0]);

@@ -10,6 +10,13 @@ interface SkipCardProps {
     skip: Skip;
 }
 
+/** 
+ * 
+ * @param skip - The skip object containing details like size, price, and specifications.
+ * @returns JSX.Element
+ * @description This component is used for rendering a card that displays information about a skip that is passed as a prop from REMWaste API.
+ */
+
 const SkipCard = React.memo(({ skip }: SkipCardProps) => {
     return (
         <Card className="w-full">

@@ -12,6 +12,17 @@ interface ListItemProps {
     message?: string;
 }
 
+/**
+ * ListItem component that displays a title, an optional description, and an icon with a tooltip.
+ * 
+ * @param title - The main label for the list item.
+ * @param description - Optional description text.
+ * @param icon - Optional icon to display with a tooltip.
+ * @param last - If true, removes the bottom border.
+ * @param message - Tooltip message for the icon.
+ * @returns JSX.Element
+ */
+
 const ListItem = ({ title, description, icon, last, message }: ListItemProps) => {
     return (
         <div className={`flex items-center py-2 border-b border-gray-200 ${last ? "border-b-0" : ""}`}>

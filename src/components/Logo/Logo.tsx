@@ -1,3 +1,9 @@
+
+/**
+ * 
+ * @returns Logo component
+ * @description This component renders a placeholder logo as an SVG.
+ */
 const Logo = () => {
     return (
         <svg

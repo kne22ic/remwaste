@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import { fetchSkips, type Skip } from "@/store/skipsSlice";
 import SkipCard from "@/components/SkipCard/SkipCard";
 
+
+/**
+ *
+ * @returns JSX.Element
+ * @description SkipSelection component allows users to select a skip size from a list of available skips.
+ * It fetches the skips from the Redux store and displays them in a picker.
+ * The selected skip is displayed in a card format below the picker.
+ */
 const SkipSelection = () => {
     const dispatch = useAppDispatch();
     const skips = useAppSelector((state) => state.skips.skips);

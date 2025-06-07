@@ -17,7 +17,7 @@ export interface Skip {
     allowed_on_road: boolean,
     allows_heavy_waste: boolean,
     image: string,
-    perfect_for: string[], // <-- add this
+    perfect_for: string[],
 }
 
 interface SkipsState {
@@ -31,6 +31,10 @@ const initialState: SkipsState = {
     loading: false,
     error: null,
 }
+
+/**
+ * Fetches skips from the API and enriches them with additional image and perfect fit information.
+ */
 
 export const fetchSkips = createAsyncThunk<Skip[]>(
     'skips/fetchSkips',

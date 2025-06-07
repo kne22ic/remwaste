@@ -1,3 +1,10 @@
+/**
+ * 
+ * @returns Footer component
+ * @description This component renders the footer of the Remwaste application.
+ * It includes placeholder text for customer support and service information.
+ */
+
 const Footer = () => {
     return (
         <footer className="flex flex-col items-center p-4 bg-white border-t border-gray-200 w-full">
